@@ -16,7 +16,7 @@ const boxen = require('boxen');
 //variables for the colors the game is going to use
 let wrongGuessColor = clc.red.bold;
 let correctGuessColor = clc.green.bold;
-let gameText = clc.cyan.bold;
+let gameText = clc.cyan.magenta;
 
 // array of word objects, with boolean to determine if it has been chosen already or not
 let listofWords = [
@@ -125,14 +125,15 @@ function gameConfirm() {
 
         // If the user selects yes to start the game, then display starting message and pick a new word. 
         if (response.startConfirmed) {
+            console.log(gameText(`\r\nWelcome ${userName}, time to have some fun.\r\n`));
             newGame();
         } else {
-            console.log(gameText(`Well ${response.userName}, you missed out on some fun`));
+            console.log(gameText(`Well ${userName}, you missed out on some fun`));
         }
     });
 };
 
-// function runs through the list of words array. Never returns the same word by using 'true' flag to prevent duplicates
+// function runs through the list of words array. Set's 'used' flag after word is chosen to prevent duplcaute choices in the same game
 function getRandomWord() {
     do {
         randomInstrumentWord = listofWords[Math.floor(Math.random() * listofWords.length)];
@@ -146,7 +147,6 @@ function getRandomWord() {
 
 // Function called whenever there is a new game
 function newGame() {
-    console.log(gameText(`\r\nWelcome ${userName}, time to have some fun.\r\n`));
     lettersUsed = [];
     activeRound = true;
     let currentWordObj = new Word(getRandomWord());
@@ -164,22 +164,24 @@ function printStats() {
 
     function stats() {
 
-          // percentage is scored based on how many words the user actually answered
-          let wordsCompleted = 0 
+        // percentage is scored based on how many words the user actually answered
+        let wordsCompleted = 0
 
-          listofWords.forEach( (element) =>  {
-             if (element.used === true) {
-                  wordsCompleted++
-             }
-          }); 
-  
+        listofWords.forEach((element) => {
+            if (element.used === true) {
+                wordsCompleted++
+            }
+            //when the game over, set flag back to false incase user wants to play again
+            element.used = false;
+        });
+
         console.log(boxen('RESULTS', { borderStyle: 'double' }));
         console.log(`\r\n Okay ${userName}, here is how you did`);
         console.log(`\r\n Words Completed: ${wordsCompleted}`);
         console.log(`\r\nWins: ${wins}`);
         console.log(`\r\nLosses: ${losses}`);
 
-        let gamePercent = wins / wordsCompleted * 100; 
+        let gamePercent = wins / wordsCompleted * 100;
 
         // 80% required for a win
         gamePercent >= 80 ? console.log(`\r\nYou Got ${gamePercent} Percent! You Won!\r\n`) : console.log(`\r\nYou Got ${gamePercent} percent. Better luck next time!\r\n`);
@@ -201,7 +203,7 @@ function printStats() {
                 console.log(`\r\nI bid you adieu, ${userName}`)
             }
         });
-    } 
+    }
 }
 
 // recursive function to control the round. Takes random word as parameter
@@ -229,9 +231,9 @@ function playRound(wordObj) {
     if (guessesRemaining === 0) {
         console.log(`\r\n You lose this round! The word was ${wordObj.wordChosen}\r\n`);
         activeRound = false;
-        losses++
+        losses++;
         if (wins + losses === listofWords.length) {
-            printStats()
+            printStats();
         } else {
             inquirer.prompt([
                 {
@@ -244,17 +246,17 @@ function playRound(wordObj) {
                 if (response.lostRound) {
                     newGame();
                 } else {
-                    printStats()
+                    printStats();
                 }
             });
         }
         // If this returns nothing then user has won the round
     } else if ((typeof winRoundTest) !== 'object') {
-        console.log(`\r\n You win this round! The word was ${wordObj.wordChosen}  \r\n `);
+        console.log(`\r\n You win this round! The word was ${wordObj.wordChosen} \r\n`);
         activeRound = false;
-        wins++
+        wins++;
         if (wins + losses === listofWords.length) {
-            printStats()
+            printStats();
         } else {
             inquirer.prompt([
                 {
@@ -284,13 +286,13 @@ function playRound(wordObj) {
 
                     // user must enter a letter and it cannot be present in the words array
                     if (upperValue.length === 1 && upperValue.match(/[a-zA-Z]/i) && lettersUsed.indexOf(upperValue) === -1) {
-                        return true
+                        return true;
                     } else if (lettersUsed.includes(upperValue)) {
                         console.log(' You already used that, try again!');
-                        return false
+                        return false;
                     } else if (upperValue.length !== 1) {
                         console.log('Invalid Input');
-                        return false
+                        return false;
                     }
                 }
             },
@@ -314,7 +316,7 @@ function playRound(wordObj) {
                 guessesRemaining--;
                 result = wrongGuessColor("INCORRECT");
                 playRound(wordObj);
-            }
+            }  
 
         });
     }
