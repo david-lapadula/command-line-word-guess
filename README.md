@@ -10,7 +10,7 @@ During development the application was difficult to build when all the functiona
 
 ## Installation
 
-If you want to test this out for yourself, it is very easy! Just use these simple steps!
+If you want to test this out for yourself, Just use these simple steps!
 
 1. Fork the repository and clone it to your local machine. 
 2. Make sure node is installed. [Node](https://nodejs.org/en/download/)
