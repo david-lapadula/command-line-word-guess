@@ -13,7 +13,7 @@ During development the application was difficult to build when all the functiona
 If you want to test this out for yourself, Just use these simple steps!
 
 1. Fork the repository and clone it to your local machine. 
-2. Make sure node is installed. [Node](https://nodejs.org/en/download/)
+2. Make sure node is installed. 
 3. Open the terminal in our project directory and run the command 'npm install'
 4. Enter 'Node index' in the terminal and then follow the commands!
 
@@ -22,5 +22,5 @@ If you want to test this out for yourself, Just use these simple steps!
   
 ## Technology
 * Javascript (ES6) 
-* Node.js
+* Node.js [Download](https://nodejs.org/en/download/)
 
