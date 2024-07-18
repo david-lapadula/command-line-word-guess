@@ -1,4 +1,4 @@
-## Command Line Guess
+## Command Line Word Guess
 
 ## Table of contents
 1. [Description](#description)
