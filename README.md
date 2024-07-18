@@ -11,10 +11,10 @@
 Command line game built with Node.js that generates random words for users to guess. It starts by displaying the letters of a word as underscores (e.g., '_ _ _ _ _'), which will be replaced by correctly guessed letters. The number of guesses is equal to twice the length of the randomly generated word. Wins, losses, and previously guessed words are also tracked while the game is running.
 
 ## Technology
+* [Figlet](https://www.npmjs.com/package/figlet)
+* [Inquirer](https://www.npmjs.com/package/@inquirer/prompts)
 * Javascript
 * [Node.js](https://nodejs.org/en/download/)
-* [Inquirer](https://www.npmjs.com/package/@inquirer/prompts)
-* [Figlet](https://www.npmjs.com/package/figlet)
 
 ## Installation
 
