@@ -1,21 +1,21 @@
 {
-  "name": "week11-cliguess",
+  "name": "Command Line Word Guess",
   "version": "1.0.0",
-  "description": "Command  Line Word Guessing Game",
+  "description": "Command Line Word Guessing Game",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DavidLapadula/cli-word-guess.git"
+    "url": "https://github.com/DavidLapadula/CommandLineWordGuess.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DavidLapadula/cli-word-guess/issues"
+    "url": "https://github.com/DavidLapadula/CommandLineWordGuess/issues"
   },
-  "homepage": "https://github.com/DavidLapadula/cli-word-guess#readme",
+  "homepage": "https://github.com/DavidLapadula/CommandLineWordGuess#readme",
   "dependencies": {
     "boxen": "^1.3.0",
     "cli-color": "^1.2.0",
