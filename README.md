@@ -20,8 +20,8 @@ Command line game built with Node.js that generates random words for users to gu
 
 1. Clone the repository to your local machine. 
 ```bash
-git clone https://github.com/DavidLapadula/CommandLineWordGuess.git
-cd commandlinewordguess
+git clone https://github.com/DavidLapadula/command-line-word-guess.git
+cd command-line-word-guess
 ```  
 2. Ensure node is installed; link in the [Technology](#technology) section. 
 3. Open a terminal in the root directory and run: 
